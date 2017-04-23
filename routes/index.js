@@ -1,5 +1,6 @@
-const express = require("express"),
-      router  = express.Router();
+const express  = require("express"),
+      router   = express.Router(),
+      passport = require("passport");
       
 const Campground = require("../models/campground"),
       Comment    = require("../models/campground"),
