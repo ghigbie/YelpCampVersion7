@@ -1,5 +1,5 @@
 const express       = require("express"),
-      LocalStrategy = require("mongoose-local-strategy"),
+      LocalStrategy = require("passport-local"),
       bodyParser    = require("body-parser"),
       mongoose      = require("mongoose"),
       passport      = require("passport"),
@@ -11,6 +11,9 @@ const Campground    = require("./models/campground"),
       Seeds         = require("./seeds");
       
 
+//mongoose.connect("mongodb://localhost/yelp_camp_v7");
 
-      
-      
+
+app.listen(process.env.PORT, process.env.IP, () => {
+   console.log("Server is lisdtening..."); 
+});
