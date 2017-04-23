@@ -1,6 +1,11 @@
+const express = require(express),
+      router  = express.Router();
 
+const Campground = require("../models/campground"),
+      Comment    = require("../models/comment");
+      
 //INDEX - show all campgrounds
-app.get("/campgrounds", (req, res) =>{
+router.get("/campgrounds", (req, res) =>{
     Campground.find({}, (err, allCampgrounds) => {
         if(err){
             console.log("THERE WAS A PROBLEM - CAMPGROUNDS");
@@ -15,7 +20,7 @@ app.get("/campgrounds", (req, res) =>{
 });
 
 //CREATE - add new campground to DB
-app.post("/campgrounds", (req, res)=> {
+router.post("/campgrounds", (req, res)=> {
     //get form data
     var name = req.body.name;
     var image = req.body.image;
@@ -33,13 +38,13 @@ app.post("/campgrounds", (req, res)=> {
 });
 
 //NEW - show form to create a new campground
-app.get("/campgrounds/new", (req, res)=>{
+router.get("/campgrounds/new", (req, res)=>{
    res.render("campgrounds/new"); 
 });
 
 
 //SHOW - shows more information about one campground - this needs to be positoned AFTER "/campgrounds/new"
-app.get("/campgrounds/:id", (req, res) => {
+router.get("/campgrounds/:id", (req, res) => {
    Campground.findById(req.params.id).populate("comments").exec((err, foundCampground) => {
        if(err){
            console.log("THERE WAS A PROBLEM - CAMPGROUNDS/:ID");
@@ -50,3 +55,5 @@ app.get("/campgrounds/:id", (req, res) => {
        }
    }); 
 });
+
+module.exports = router;
