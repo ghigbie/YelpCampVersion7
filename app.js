@@ -11,7 +11,7 @@ const Campground    = require("./models/campground"),
       seedDB        = require("./seeds");
       
 
-//mongoose.connect("mongodb://localhost/yelp_camp_v7");
+mongoose.connect("mongodb://localhost/yelp_camp_v7");
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
@@ -19,6 +19,19 @@ app.use(express.static(__dirname + "/public"));
 seedDB();
 
 
+app.get("/", (req, res) =>{
+    res.render("landing");
+});
+
+app.get("/home", (req, res) => {
+    res.render("home"); 
+});
+
+app.get("*", (req, res) => {
+    res.render("notfound");
+});
+
 app.listen(process.env.PORT, process.env.IP, () => {
    console.log("Server is listening..."); 
 });
+
