@@ -1,7 +1,10 @@
+const express = require("express"),
+      router  = express.Router();
+
 // ======================
 // COMMENTS ROUTE
 // ======================
-app.get("/campgrounds/:id/comments/new", isLoggedIn, (req, res) =>{
+router.get("/campgrounds/:id/comments/new", isLoggedIn, (req, res) =>{
    //find campground by id
    Campground.findById(req.params.id, (err, campground) => {
        if(err){
@@ -12,7 +15,7 @@ app.get("/campgrounds/:id/comments/new", isLoggedIn, (req, res) =>{
    });
 });
 
-app.post("/campgrounds/:id/comments", isLoggedIn, (req, res) => {
+router.post("/campgrounds/:id/comments", isLoggedIn, (req, res) => {
     //lookup campground using ID
     Campground.findById(req.params.id, (err, campground) => {
         if(err){
