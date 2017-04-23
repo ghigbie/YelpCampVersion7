@@ -5,6 +5,13 @@ const express  = require("express"),
 const Campground = require("../models/campground"),
       Comment    = require("../models/campground"),
       User       = require("../models/user");
+      
+      
+//Landing Page
+router.get("/", (req, res) =>{
+    res.render("landing");
+});
+
 //=============
 //AUTH ROUTES
 //=============
