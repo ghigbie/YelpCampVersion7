@@ -1,6 +1,8 @@
 const express = require("express"),
       router  = express.Router();
 
+const Campground = require("../models/campgrounds");
+
 // ======================
 // COMMENTS ROUTE
 // ======================
@@ -35,5 +37,12 @@ router.post("/campgrounds/:id/comments", isLoggedIn, (req, res) => {
         }
     });
 });
+
+function isLoggedIn(req, res, next){
+    if(req.isAuthenticated()){
+        return next;
+    }
+    res.redirect("/login");
+}
 
 module.exports = router;
