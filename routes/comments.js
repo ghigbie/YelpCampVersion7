@@ -35,3 +35,5 @@ router.post("/campgrounds/:id/comments", isLoggedIn, (req, res) => {
         }
     });
 });
+
+module.exports = router;

@@ -53,3 +53,5 @@ router.get("/logout", (req, res) => {
 router.get("*", (req, res) => {
     res.render("notfound"); 
 });
+
+module.exports = router;
