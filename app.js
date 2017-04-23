@@ -187,6 +187,10 @@ app.get("*", (req, res) => {
     res.render("notfound"); 
 });
 
+app.use(indexRoutes);
+app.use(commentsRoutes);
+app.use(campgroundRoutes);
+
 app.listen(process.env.PORT, process.env.IP, () => {
    console.log("Server is up and running!"); 
 });
