@@ -10,6 +10,10 @@ const Campground  = require("./models/campground"),
       User        = require("./models/user"),
       seedDB      = require("./seeds");
       
+//route files
+const campgroundRoutes = require("./routes/campgrounds"),
+      commentsRoutes   = require("./routes/comments"),
+      indexRoutes      = require("./routes/index");
 
 mongoose.connect("mongodb://localhost/yelp_camp_v7");
 app.use(bodyParser.urlencoded({extended: true}));
@@ -172,7 +176,6 @@ function isLoggedIn(req, res, next){
     }
     res.redirect("/login");
 }
-
 
 //logout route
 app.get("/logout", (req, res) => {
