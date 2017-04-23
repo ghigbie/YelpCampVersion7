@@ -1,7 +1,8 @@
 const express = require("express"),
       router  = express.Router();
 
-const Campground = require("../models/campgrounds");
+const Campground = require("../models/campgrounds"),
+      Comment    = require("../models/comments");
 
 // ======================
 // COMMENTS ROUTE
