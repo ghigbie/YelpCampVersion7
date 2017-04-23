@@ -1,5 +1,9 @@
 const express = require("express"),
       router  = express.Router();
+      
+const Campground = require("../models/campground"),
+      Comment    = require("../models/campground"),
+      User       = require("../models/user");
 //=============
 //AUTH ROUTES
 //=============
