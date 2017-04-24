@@ -10,7 +10,7 @@ const Campground  = require("./models/campground"),
       User        = require("./models/user"),
       seedDB      = require("./seeds");
       
-//route files
+//requiring routes
 const campgroundsRoutes = require("./routes/campgrounds"),
       commentsRoutes   = require("./routes/comments"),
       indexRoutes      = require("./routes/index");
@@ -48,9 +48,9 @@ function isLoggedIn(req, res, next){
     res.redirect("/login");
 }
 
-app.use(indexRoutes);
+app.use("/", indexRoutes);
 app.use("/campgrounds", campgroundsRoutes);
-app.use(commentsRoutes);
+app.use("/campgrounds/:id/comments", commentsRoutes);
 
 app.listen(process.env.PORT, process.env.IP, () => {
    console.log("Server is up and running!"); 

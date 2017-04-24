@@ -58,6 +58,7 @@ router.get("*", (req, res) => {
     res.render("notfound"); 
 });
 
+//middleware
 function isLoggedIn(req, res, next){
     if(req.isAuthenticated()){
         return next;
