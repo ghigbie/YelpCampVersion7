@@ -7,7 +7,7 @@ const Campground = require("../models/campgrounds"),
 // ======================
 // COMMENTS ROUTE
 // ======================
-router.get("/campgrounds/:id/comments/new", isLoggedIn, (req, res) =>{
+router.get("/new", isLoggedIn, (req, res) =>{
    //find campground by id
    Campground.findById(req.params.id, (err, campground) => {
        if(err){
@@ -18,7 +18,7 @@ router.get("/campgrounds/:id/comments/new", isLoggedIn, (req, res) =>{
    });
 });
 
-router.post("/campgrounds/:id/comments", isLoggedIn, (req, res) => {
+router.post("/", isLoggedIn, (req, res) => {
     //lookup campground using ID
     Campground.findById(req.params.id, (err, campground) => {
         if(err){
