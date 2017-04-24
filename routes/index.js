@@ -5,7 +5,7 @@ const express  = require("express"),
 const User = require("../models/user");
       
       
-//Landing Page
+//root route
 router.get("/", (req, res) =>{
     res.render("landing");
 });
@@ -47,21 +47,22 @@ router.post("/login", passport.authenticate("local",
     }), function(req, res){
 });
 
-function isLoggedIn(req, res, next){
-    if(req.isAuthenticated()){
-        return next;
-    }
-    res.redirect("/login");
-}
-
 //logout route
 router.get("/logout", (req, res) => {
     req.logout();
     res.redirect("/campgrounds");
 });
 
+//catch all route
 router.get("*", (req, res) => {
     res.render("notfound"); 
 });
+
+function isLoggedIn(req, res, next){
+    if(req.isAuthenticated()){
+        return next;
+    }
+    res.redirect("/login");
+}
 
 module.exports = router;
