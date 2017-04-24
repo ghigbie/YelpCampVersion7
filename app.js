@@ -49,7 +49,7 @@ function isLoggedIn(req, res, next){
 }
 
 app.use(indexRoutes);
-app.use(campgroundsRoutes);
+app.use("/campgrounds", campgroundsRoutes);
 app.use(commentsRoutes);
 
 app.listen(process.env.PORT, process.env.IP, () => {
