@@ -11,7 +11,7 @@ const Campground  = require("./models/campground"),
       seedDB      = require("./seeds");
       
 //route files
-const campgroundRoutes = require("./routes/campgrounds"),
+const campgroundsRoutes = require("./routes/campgrounds"),
       commentsRoutes   = require("./routes/comments"),
       indexRoutes      = require("./routes/index");
 
@@ -40,9 +40,17 @@ passport.use(new LocalStrategy(User.authenticate())); //User.authenticate comes 
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
+
+function isLoggedIn(req, res, next){
+    if(req.isAuthenticated()){
+        return next;
+    }
+    res.redirect("/login");
+}
+
 app.use(indexRoutes);
+app.use(campgroundsRoutes);
 app.use(commentsRoutes);
-app.use(campgroundRoutes);
 
 app.listen(process.env.PORT, process.env.IP, () => {
    console.log("Server is up and running!"); 
