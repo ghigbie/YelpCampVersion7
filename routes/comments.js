@@ -1,8 +1,8 @@
 const express = require("express"),
       router  = express.Router({mergeParams: true});
 
-const Campground = require("../models/campgrounds"),
-      Comment    = require("../models/comments");
+const Campground = require("../models/campground"),
+      Comment    = require("../models/comment");
 
 //Comments NEW
 router.get("/new", isLoggedIn, (req, res) =>{
